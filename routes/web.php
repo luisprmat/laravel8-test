@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     })->name('dashboard');
 
     Route::get('/users', function () {
-        return view('users');
+        $users = User::paginate();
+
+        return view('users', compact('users'));
     })->name('users');
 });
 

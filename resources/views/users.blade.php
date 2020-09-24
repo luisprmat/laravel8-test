@@ -10,12 +10,13 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <h1 class="font-semibold text-xl text-gray-800 leading-tight">Listado de usuarios</h1>
                 <ul>
-                    @forelse (App\Models\User::all() as $user)
+                    @forelse ($users as $user)
                         <li>{{ $user->name }}: <i>({{ $user->email }})</i></li>
                     @empty
                         <li>No hay usuarios</li>
                     @endforelse
                 </ul>
+                {{ $users->onEachSide(2)->links() }}
             </div>
         </div>
     </div>
